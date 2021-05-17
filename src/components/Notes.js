@@ -2,6 +2,14 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleImportanceOf } from '../reducers/noteReducer'
 
+const Note = ({ note, handleClick }) => {
+  return(
+    <li onClick={handleClick}>
+      {note.content} 
+      <strong> {note.important ? 'important' : ''}</strong>
+    </li>
+  )
+}
 
 const Notes = () => {
   const dispatch = useDispatch()
@@ -17,10 +25,13 @@ const Notes = () => {
   return(
     <ul>
       {notes.map(note =>
-        <li onClick={() => dispatch(toggleImportanceOf(note.id))}>
-        {note.content} 
-        <strong> {note.important ? 'important' : ''}</strong>
-        </li>
+        <Note
+          key={note.id}
+          note={note}
+          handleClick={() => 
+            dispatch(toggleImportanceOf(note.id))
+          }
+        />
       )}
     </ul>
   )
