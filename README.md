@@ -4,3 +4,4 @@
 1. Install dependencies - `npm start`
 2. Run json-server - `npm run server`
 3. Run React App - `npm start`
+4. Run tests - `npm run test`
